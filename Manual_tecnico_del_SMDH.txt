@@ -1,0 +1,255 @@
+Manual técnico del SMDH
+
+
+Acerca de este documento:
+Este documento esta dirigido al personal que desee hacer mejoras y modificaciones a la aplicación SMDH.
+
+
+Ambiente de desarrollo y dependencias
+
+Lenguaje de programación: Python 2.5   http://www.python.org/download/releases/2.5.4/
+Ambiente de programación: Boa constructor  http://boa-constructor.sourceforge.net/
+
+Motor de base de datos: Postgres 8.3  http://www.postgresql.org/
+
+Librerías:
+   wxpython    (wx-2.8-msw-unicode) http://www.wxpython.org/
+   sqlalchemy 5.2 http://www.sqlalchemy.org/
+   Psycopg2   http://pypi.python.org/pypi/psycopg2/2.0.4
+
+
+Aplicaciones para generar la distribución en windows:
+py2exe   http://www.py2exe.org/
+nsis installer http://nsis.sourceforge.net/
+
+Procedimiento para generar la distribución:
+Ejecutar el comando setup.bat
+El producto generado es el archivo instala.exe
+
+
+
+
+
+Listado de programas fuente y su contenido.
+
+
+
+smdh.py:
+Modulo de entrada al sistema.
+
+Frame1.py:
+Menú principal
+
+
+
+
+module2.py:
+Definiciones de tablas, objetos y mapeos entre tablas y objetos.
+Funciones de soporte para el manejo de la base de datos, como ser funciones de validación, llenado de controles.
+Definición del objeto 'status', que constituye en la estructura que refleja el estado del sistema.
+
+screenconfig.py:
+Configuración de pestañas y campos visibles.
+Función de lectura de configuración.
+
+screenorgconfig.py:
+Datos de la organización.
+
+FrameUtils.py:
+Herramientas generales de administración.
+Incluye aplicación de parches, importación/exportación de tesauro y respaldos.
+
+FrameUser.py:
+Alta / cambio de usuarios
+
+FrameOptions.py:
+Configuración local. Fija la dirección IP del servidor postgres.
+
+FrameUpdate.py:
+Contiene código para hacer actualizaciones de la base de datos.
+
+
+
+Frame2.py:
+Este modulo contiene la interfase central del sistema. Todas las pestañas principales 
+(caso, acto, fuentes, intervenciones, personas) y sus correspondientes subsidiarias están programadas en este archivo
+Incluye las funcionalidades reservadas a la secretaria ejecutiva, como ser el manejo de datos provenientes de los grupos.
+
+
+listacampos.py:
+Listado de campos de captura (camposEntidad)  , por pestaña, que es utilizado para cambio de status (solo lectura / escritura) .
+
+
+cnf.py:
+Información de configuración, como ser la versión del producto
+
+
+configmodule.py:
+Define algunos defaults como el orden en que se presentan algunas taxonomías y valores por omisión para algunos campos
+
+
+DlgError.py:
+Código usado para los mensajes de error.
+
+
+midataset.py:
+Generación de query para los reportes y búsquedas.
+
+
+FrameBusquedas.py:
+Funciones de búsqueda exhaustiva, incluyendo la definición de los objetos utilizados.
+
+DlgTipoCond.py:
+Dialogo para seleccionar una condición a agregar a una búsqueda exhaustiva.
+
+DlgCond.py:
+Dialogo para condiciones de fecha
+
+DlgUser.py:
+Dialogo para condiciones de usuario
+
+FrameVocab.py:
+Mantenimiento de vocabularios y ayuda contextual.
+
+DlgAltaVocab.py:
+Alta de un término de vocabulario.
+
+
+
+
+frameRep5.py:
+Despliega la pantalla que ofrece los diferentes reportes. Ofrece opciones de archivo de impresión y aplicación para desplegar el reporte.
+
+moduleRep4.py:
+Generación de cruces, conocidos como reportes estadísticos
+
+moduleRep3.py:
+Generación de reportes analíticos o tabulares.
+
+moduleRep1.py: (checar si aun es vigente....)
+Funciones de soporte para la generación de reporte narrativo
+
+moduleRep2.py:
+Funciones de soporte para la generación de reporte narrativo
+
+moduleRep6.py:
+Definiciones de la estructura para los reportes narrativos (Caso, Persona)
+
+ModuleRep7:
+Definiciones de la estructura para el reporte de Resumen de Caso.
+
+midataset.py:
+Generación de query para reporte.
+
+
+
+
+printconfig.py:
+Funciones de soporte para la configuración de los reportes narrativos
+
+
+dlggetdescrip.py:
+Dialogo genérico para obtener una descripción.
+
+DlgInterv.py:
+Dialogo para obtener datos para el alta de una intervención.
+
+DlgAltaActo.py:
+Dialogo para obtener datos para el alta de un acto.
+
+DlgCaso.py:
+Dialogo para obtener datos para el alta de un caso.
+
+DlgDireccion.py:
+Dialogo para obtener datos para el alta o cambios en la dirección de una persona
+
+DlgLocalidad.py:
+Dialogo para obtener datos para el alta o cambios en la localización de un caso
+
+dlgpersona.py:
+Dialogo para seleccionar una persona existente. Incluye búsqueda incremental.
+
+DlgAltaPersona.py:
+Dialogo para obtener datos para el alta de una persona.
+
+DLGTaxTree.py:
+Dialogo para seleccionar un término de vocabulario.
+
+
+DlgLoginfo.py:
+Presenta los datos de creación/actualización de una entidad.
+
+DlgVincular.py:
+Dialogo para obtener datos para el alta de un detalle biográfico.
+
+Locldetalles.py:
+Despliegue de detalles de localización de un caso
+
+
+Casosimilar.py:
+Funciones para determinar si un caso existente en C2 ya existe en C3 pero generado por otro grupo.
+
+Personasimilar.py:
+Funciones para determinar si una persona existente en C2 ya existe en C3 pero generada por otro grupo.
+
+dashboard1.py:
+Tablero de control para invocar funciones para importar casos y personas provenientes 
+de los grupos, y funciones para comparar contenidos de C1 y C2
+Funciones de desencriptacion
+
+
+moduleImp1.py:
+Funciones para importar casos y personas provenientes de los grupos
+
+FrameCompare.py:
+Funciones para comparar contenidos de C1 y C2
+
+Diagnostico.py:
+Función para presentar resultados de diagnostico del proceso de importación de datos
+
+
+
+
+SOPORTE PARA LA DISTRIBUCION
+
+setup.bat:
+Script que genera la distribución
+
+setup.py:
+Configuración para generar la distribución
+
+instala.nsi:
+Configuración para generar la instalación.
+
+
+
+
+
+
+
+
+
+
+
+
+UTILERIAS EXTERNAS
+
+reportaVocab.py:
+Vaciado de una taxonomía, para generar reportes
+
+importarayuda.py:
+Importación de ayuda contextual desde archivo de Excel en formato separado por tabulaciones
+
+xmlread.py:
+Importación de estados y municipios a las taxonomías
+
+
+
+Otros documentos a consultar:
+
+Estructura de la base de datos:
+  Reporte de estructura.html
+  Diagrama de estructura.pdf
+
+
+  

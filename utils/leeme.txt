@@ -1,0 +1,4 @@
+Este directorio contiene informacion de encripcion (llaves publicas gpg)
+que actualmente es especifica para la REDTDT. 
+
+Se incluye en la distribucion de los programas fuente a efectos ilustrativos.
